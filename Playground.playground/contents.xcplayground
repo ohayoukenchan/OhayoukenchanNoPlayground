@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios'>
+    <pages>
+        <page name='Observable異常終了'/>
+        <page name='Observable正常終了'/>
+        <page name='Retryオペレーター'/>
+        <page name='Catch Error'/>
+        <page name='CatchErrorJustReturn'/>
+    </pages>
+</playground>

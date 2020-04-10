@@ -1,3 +1,5 @@
+//: [Previous](@previous)
+
 import Foundation
 import RxSwift
 
@@ -7,15 +9,19 @@ public enum TestError : Error {
 
 let sequenceThatErrors = Observable<String>.create { observer in
     observer.onNext("A")
+
     observer.onError(TestError.test)
+    print("Error encounted")
+    print("AAAAAAA \(TestError.test)")
+
     observer.onNext("B")
     observer.onCompleted()
 
     return Disposables.create()
 }
 
-_ = sequenceThatErrors
-    .catchErrorJustReturn("Z")
+sequenceThatErrors
+    .retry(3)
     .subscribe(onNext: {
         print("onNext: \($0)")
     }, onError: {
@@ -29,7 +35,3 @@ _ = sequenceThatErrors
 var str = "Hello, playground"
 
 //: [Next](@next)
-
-
-//: [Next](@next)
-
